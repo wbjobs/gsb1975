@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>组件级错误边界演示</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>组件级错误边界演示</h1>
+    <p class="subtitle">自定义边界 + IndexedDB + Web Worker ｜ 边界 · 降级 · 重试 · 日志 · 异常提示</p>
+  </header>
+
+  <!-- 全局异常提示（Toast）挂载点 -->
+  <div id="toast-container" aria-live="polite"></div>
+
+  <main class="layout">
+    <section class="panel">
+      <h2>组件区（各自独立边界，互不影响）</h2>
+      <div id="component-grid" class="grid"></div>
+    </section>
+
+    <section class="panel">
+      <h2>错误日志（IndexedDB，可查询）</h2>
+      <div class="log-toolbar">
+        <select id="log-level-filter">
+          <option value="">全部级别</option>
+          <option value="error">error</option>
+          <option value="warn">warn</option>
+          <option value="info">info</option>
+        </select>
+        <input id="log-keyword" type="search" placeholder="按组件名 / 消息搜索" />
+        <button id="log-refresh" type="button">刷新</button>
+        <button id="log-clear" type="button" class="danger">清空日志</button>
+      </div>
+      <div id="log-viewer" class="log-viewer"></div>
+    </section>
+  </main>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
